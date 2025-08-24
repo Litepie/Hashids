@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('hashids_encode')) {
+if (! function_exists('hashids_encode')) {
     /**
      * Encode a value using Sqids.
      *
@@ -10,7 +10,7 @@ if (!function_exists('hashids_encode')) {
     function hashids_encode($value)
     {
         $sqids = app('hashids');
-        
+
         if (is_array($value)) {
             return $sqids->encode($value);
         }
@@ -19,7 +19,7 @@ if (!function_exists('hashids_encode')) {
     }
 }
 
-if (!function_exists('hashids_decode')) {
+if (! function_exists('hashids_decode')) {
     /**
      * Decode a sqid back to its original value.
      *
@@ -28,10 +28,10 @@ if (!function_exists('hashids_decode')) {
      */
     function hashids_decode($id)
     {
-        if (empty($id) || !is_string($id)) {
+        if (empty($id) || ! is_string($id)) {
             return null;
         }
-        
+
         $decoded = app('hashids')->decode($id);
 
         if (empty($decoded)) {
@@ -42,7 +42,7 @@ if (!function_exists('hashids_decode')) {
     }
 }
 
-if (!function_exists('hashids_config')) {
+if (! function_exists('hashids_config')) {
     /**
      * Get hashids configuration value.
      *
@@ -56,7 +56,7 @@ if (!function_exists('hashids_config')) {
     }
 }
 
-if (!function_exists('sqids_encode')) {
+if (! function_exists('sqids_encode')) {
     /**
      * Encode a value using Sqids (alias for hashids_encode).
      *
@@ -69,7 +69,7 @@ if (!function_exists('sqids_encode')) {
     }
 }
 
-if (!function_exists('sqids_decode')) {
+if (! function_exists('sqids_decode')) {
     /**
      * Decode a sqid back to its original value (alias for hashids_decode).
      *

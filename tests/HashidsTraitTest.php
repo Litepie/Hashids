@@ -12,7 +12,7 @@ class HashidsTraitTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         Schema::create('test_models', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -25,7 +25,7 @@ class HashidsTraitTest extends TestCase
     {
         $model = TestModel::create(['name' => 'Test']);
         $routeKey = $model->getRouteKey();
-        
+
         $this->assertIsString($routeKey);
         $this->assertNotEquals($model->id, $routeKey);
     }
@@ -35,7 +35,7 @@ class HashidsTraitTest extends TestCase
     {
         $model = TestModel::create(['name' => 'Test']);
         $eid = $model->eid;
-        
+
         $this->assertIsString($eid);
         $this->assertEquals($model->getRouteKey(), $eid);
     }
@@ -45,7 +45,7 @@ class HashidsTraitTest extends TestCase
     {
         $model = TestModel::create(['name' => 'Test']);
         $encodedId = $model->getRouteKey();
-        
+
         $found = TestModel::findOrNew($encodedId);
         $this->assertEquals($model->id, $found->id);
         $this->assertEquals($model->name, $found->name);
@@ -64,7 +64,7 @@ class HashidsTraitTest extends TestCase
     {
         $model = TestModel::create(['name' => 'Test']);
         $signedId = $model->getSignedId();
-        
+
         $this->assertIsString($signedId);
         $this->assertNotEquals($model->getRouteKey(), $signedId);
     }
@@ -74,7 +74,7 @@ class HashidsTraitTest extends TestCase
     {
         $model = TestModel::create(['name' => 'Test']);
         $signedId = $model->getSignedId('+1 hour');
-        
+
         $this->assertIsString($signedId);
     }
 
@@ -83,8 +83,8 @@ class HashidsTraitTest extends TestCase
     {
         $model = TestModel::create(['name' => 'Test']);
         $encodedId = $model->getRouteKey();
-        
-        $resolved = (new TestModel())->resolveRouteBinding($encodedId);
+
+        $resolved = (new TestModel)->resolveRouteBinding($encodedId);
         $this->assertInstanceOf(TestModel::class, $resolved);
         $this->assertEquals($model->id, $resolved->id);
     }
@@ -92,7 +92,7 @@ class HashidsTraitTest extends TestCase
     /** @test */
     public function it_returns_null_for_invalid_route_binding()
     {
-        $resolved = (new TestModel())->resolveRouteBinding('invalid');
+        $resolved = (new TestModel)->resolveRouteBinding('invalid');
         $this->assertNull($resolved);
     }
 }
@@ -100,7 +100,8 @@ class HashidsTraitTest extends TestCase
 class TestModel extends Model
 {
     use Hashids;
-    
+
     protected $table = 'test_models';
+
     protected $fillable = ['name'];
 }

@@ -11,7 +11,7 @@ class HashidsTest extends TestCase
     {
         $encoded = hashids_encode(123);
         $this->assertIsString($encoded);
-        
+
         $decoded = hashids_decode($encoded);
         $this->assertEquals(123, $decoded);
     }
@@ -22,7 +22,7 @@ class HashidsTest extends TestCase
         $numbers = [123, 456, 789];
         $encoded = hashids_encode($numbers);
         $this->assertIsString($encoded);
-        
+
         $decoded = hashids_decode($encoded);
         $this->assertEquals($numbers, $decoded);
     }
@@ -32,7 +32,7 @@ class HashidsTest extends TestCase
     {
         $encoded = Hashids::encode(123);
         $this->assertIsString($encoded);
-        
+
         $decoded = Hashids::decode($encoded);
         $this->assertEquals([123], $decoded);
     }
@@ -50,7 +50,7 @@ class HashidsTest extends TestCase
         $hex = 'ff';
         $encoded = hashids_encode_hex($hex);
         $this->assertIsString($encoded);
-        
+
         $decoded = hashids_decode_hex($encoded);
         $this->assertEquals($hex, $decoded);
     }

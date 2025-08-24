@@ -22,20 +22,21 @@ trait Hashids
      * @param  string  $id
      * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Model|static
+     *
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public static function findOrFail($id, $columns = ['*'])
     {
         $decodedId = hashids_decode($id);
-        
+
         if (empty($decodedId)) {
-            throw (new static())->newModelNotFoundException();
+            throw (new static)->newModelNotFoundException();
         }
-        
+
         if (static::usesSoftDeletes()) {
             return parent::withTrashed()->findOrFail($decodedId, $columns);
         }
-        
+
         return parent::findOrFail($decodedId, $columns);
     }
 
@@ -49,18 +50,18 @@ trait Hashids
     public static function findOrNew($id, $columns = ['*'])
     {
         $decodedId = hashids_decode($id);
-        
+
         if (empty($decodedId)) {
-            return new static();
+            return new static;
         }
-        
+
         if (static::usesSoftDeletes()) {
             $result = parent::withTrashed()->find($decodedId, $columns);
         } else {
             $result = parent::find($decodedId, $columns);
         }
-        
-        return $result ?: new static();
+
+        return $result ?: new static;
     }
 
     /**
@@ -91,13 +92,13 @@ trait Hashids
      */
     public function getSignedId($expiry = 0)
     {
-        if (!empty($expiry)) {
+        if (! empty($expiry)) {
             $expiry = is_numeric($expiry) ? $expiry : strtotime($expiry);
         }
-        
+
         $appKey = hashids_config('salt') ?: (\function_exists('env') ? env('APP_KEY', '') : '');
         $salt = preg_replace('/[^0-9]/', '', $appKey);
-        
+
         return hashids_encode([$this->getKey(), $salt, $expiry]);
     }
 
@@ -111,31 +112,31 @@ trait Hashids
     public static function findBySignedId($signedId, $columns = ['*'])
     {
         $decodedSignedId = hashids_decode($signedId);
-        
+
         if (empty($decodedSignedId) || count($decodedSignedId) !== 3) {
-            return new static();
+            return new static;
         }
-        
+
         $appKey = hashids_config('salt') ?: (\function_exists('env') ? env('APP_KEY', '') : '');
         $salt = preg_replace('/[^0-9]/', '', $appKey);
-        
+
         // Verify salt
         if ($salt != $decodedSignedId[1]) {
-            return new static();
+            return new static;
         }
-        
+
         // Check expiry
         if ($decodedSignedId[2] != 0 && $decodedSignedId[2] < strtotime('now')) {
-            return new static();
+            return new static;
         }
-        
+
         if (static::usesSoftDeletes()) {
             $result = parent::withTrashed()->find($decodedSignedId[0], $columns);
         } else {
             $result = parent::find($decodedSignedId[0], $columns);
         }
-        
-        return $result ?: new static();
+
+        return $result ?: new static;
     }
 
     /**
@@ -148,11 +149,11 @@ trait Hashids
     public function resolveRouteBinding($value, $field = null)
     {
         $decodedId = hashids_decode($value);
-        
+
         if (empty($decodedId)) {
             return null;
         }
-        
+
         return static::where($field ?? $this->getRouteKeyName(), $decodedId)->first();
     }
 }

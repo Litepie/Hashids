@@ -8,15 +8,15 @@ $id = 123;
 $encoded = hashids_encode($id);
 echo "Original ID: {$id}\n";
 echo "Encoded: {$encoded}\n";
-echo "Decoded: " . hashids_decode($encoded) . "\n\n";
+echo 'Decoded: ' . hashids_decode($encoded) . "\n\n";
 
 // 2. Multiple values
 echo "=== Multiple Values ===\n";
 $ids = [123, 456, 789];
 $encoded = hashids_encode($ids);
-echo "Original IDs: " . implode(', ', $ids) . "\n";
+echo 'Original IDs: ' . implode(', ', $ids) . "\n";
 echo "Encoded: {$encoded}\n";
-echo "Decoded: " . implode(', ', hashids_decode($encoded)) . "\n\n";
+echo 'Decoded: ' . implode(', ', hashids_decode($encoded)) . "\n\n";
 
 // 3. Using facade
 echo "=== Using Facade ===\n";
@@ -24,7 +24,7 @@ use Litepie\Hashids\Facades\Hashids;
 
 $encoded = Hashids::encode(456);
 echo "Facade encoded: {$encoded}\n";
-echo "Facade decoded: " . implode(', ', Hashids::decode($encoded)) . "\n\n";
+echo 'Facade decoded: ' . implode(', ', Hashids::decode($encoded)) . "\n\n";
 
 // 4. Model usage example
 echo "=== Model Usage Example ===\n";

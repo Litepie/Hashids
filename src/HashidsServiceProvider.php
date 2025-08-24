@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Litepie\Hashids;
 
-use Sqids\Sqids;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use Sqids\Sqids;
 
 class HashidsServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,7 @@ class HashidsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/hashids.php', 'hashids');
+        $this->mergeConfigFrom(__DIR__ . '/../config/hashids.php', 'hashids');
 
         // Bind 'hashids' shared component to the IoC container
         $this->app->singleton('hashids', function (Application $app): Sqids {
@@ -40,11 +40,11 @@ class HashidsServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/hashids.php' => config_path('hashids.php'),
+                __DIR__ . '/../config/hashids.php' => config_path('hashids.php'),
             ], 'hashids-config');
-            
+
             $this->publishes([
-                __DIR__.'/../config/hashids.php' => config_path('hashids.php'),
+                __DIR__ . '/../config/hashids.php' => config_path('hashids.php'),
             ], 'config');
         }
     }

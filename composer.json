@@ -1,0 +1,77 @@
+{
+    "name": "litepie/hashids",
+    "description": "Laravel Sqids (next-gen Hashids) package for encoding and decoding database IDs with route model binding support",
+    "keywords": ["laravel", "sqids", "hashids", "encoding", "decoding", "litepie", "obfuscation", "id-encoding", "route-binding"],
+    "homepage": "https://github.com/litepie/hashids",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Litepie Team",
+            "email": "info@litepie.com",
+            "homepage": "https://github.com/litepie"
+        }
+    ],
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/litepie"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^10.0|^11.0|^12.0",
+        "illuminate/database": "^10.0|^11.0|^12.0",
+        "sqids/sqids": "^0.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5|^11.0",
+        "orchestra/testbench": "^8.0|^9.0|^10.0",
+        "pestphp/pest": "^2.0",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "larastan/larastan": "^2.0",
+        "phpstan/phpstan": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Litepie\\Hashids\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Litepie\\Hashids\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "analyse": "vendor/bin/phpstan analyse",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Litepie\\Hashids\\HashidsServiceProvider"
+            ],
+            "aliases": {
+                "Hashids": "Litepie\\Hashids\\Facades\\Hashids"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/litepie/hashids/issues",
+        "source": "https://github.com/litepie/hashids",
+        "docs": "https://github.com/litepie/hashids#readme"
+    }
+}

@@ -194,7 +194,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Litepie Team](https://github.com/litepie)
+- [Lavalite Team](https://github.com/litepie)
 - [All Contributors](../../contributors)
 
 ## License
@@ -207,8 +207,26 @@ This package is open-sourced software licensed under the [MIT license](LICENSE).
 - **Documentation**: [README](https://github.com/litepie/hashids#readme)
 - **Source**: [GitHub Repository](https://github.com/litepie/hashids)
 
-## Acknowledgments
+---
 
-- Built on top of [sqids/sqids](https://github.com/sqids/sqids-php) (next-generation Hashids)
-- Maintains backward compatibility with Hashids API
-- Inspired by the original Litepie framework implementation
+## 🏢 About
+
+This package is part of the **Litepie** ecosystem, developed by **Renfos Technologies**. 
+
+### Organization Structure
+- **Vendor:** Litepie
+- **Framework:** Lavalite
+- **Company:** Renfos Technologies
+
+### Links & Resources
+- 🌐 **Website:** [https://lavalite.org](https://lavalite.org)
+- 📚 **Documentation:** [https://docs.lavalite.org](https://docs.lavalite.org)
+- 💼 **Company:** [https://renfos.com](https://renfos.com)
+- 📧 **Support:** [support@lavalite.org](mailto:support@lavalite.org)
+
+---
+
+<div align="center">
+  <p><strong>Built with ❤️ by Renfos Technologies</strong></p>
+  <p><em>Empowering developers with robust Laravel solutions</em></p>
+</div>

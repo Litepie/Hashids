@@ -1,15 +1,25 @@
 {
     "name": "litepie/hashids",
     "description": "Laravel Sqids (next-gen Hashids) package for encoding and decoding database IDs with route model binding support",
-    "keywords": ["laravel", "sqids", "hashids", "encoding", "decoding", "litepie", "obfuscation", "id-encoding", "route-binding"],
+    "keywords": [
+        "laravel",
+        "sqids",
+        "hashids",
+        "encoding",
+        "decoding",
+        "litepie",
+        "obfuscation",
+        "id-encoding",
+        "route-binding"
+    ],
     "homepage": "https://github.com/litepie/hashids",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": "Litepie Team",
-            "email": "info@litepie.com",
-            "homepage": "https://github.com/litepie"
+            "name": "Lavalite Team",
+            "email": "support@lavalite.org",
+            "homepage": "https://lavalite.org"
         }
     ],
     "funding": [
